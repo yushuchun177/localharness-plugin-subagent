@@ -1,0 +1,22 @@
+{
+  "id": "subagent",
+  "name": "子智能体",
+  "name_en": "Sub-agent",
+  "version": "0.1.0",
+  "description": "另起一个独立的模型实例，带着自己的系统提示去处理子任务，只把结果交回来。",
+  "description_en": "Spawn a separate model instance with its own system prompt for a subtask, returning only the result.",
+  "author": "yushuchun177",
+  "homepage": "https://github.com/yushuchun177/localharness-plugin-subagent",
+  "min_app": "0.1.0",
+  "tools": [
+    {
+      "name": "subagent_ask",
+      "description": "把一段子任务交给新的模型实例去做（独立上下文，不污染当前对话）。适合拆分复杂任务、做评审。",
+      "params": {
+        "task": "string，子任务描述",
+        "system": "string，可选，子智能体的角色设定",
+        "max_tokens": "int，可选，默认 512"
+      }
+    }
+  ]
+}
