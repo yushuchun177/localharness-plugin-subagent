@@ -15,6 +15,14 @@ func _app() -> Node:
 	return ml.root.get_node_or_null("/root/App") if ml != null else null
 
 
+
+func _pref(key: String, def_value):
+	var ml := Engine.get_main_loop()
+	var prefs = ml.root.get_node_or_null("/root/PluginPrefs") if ml != null else null
+	if prefs == null:
+		return def_value
+	return prefs.get_value("subagent", key, def_value)
+
 func run(tool: String, args: Dictionary) -> Dictionary:
 	if tool != "subagent_ask":
 		return {"ok": false, "output": "未知工具：%s" % tool}
@@ -33,7 +41,7 @@ func run(tool: String, args: Dictionary) -> Dictionary:
 	var ngl: int = int(a.cfg.get("gpu_layers", -1)) if backend != "cpu" else 0
 	if ngl < 0:
 		ngl = 999
-	var max_tokens: int = int(args.get("max_tokens", 512))
+	var max_tokens: int = int(args.get("max_tokens", int(_pref("max_tokens", 512))))
 
 	var pid := _spawn(exe, [
 		"-m", model,
