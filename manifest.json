@@ -8,6 +8,27 @@
   "author": "yushuchun177",
   "homepage": "https://github.com/yushuchun177/localharness-plugin-subagent",
   "min_app": "0.1.0",
+  "requires": {
+    "os": "全平台",
+    "deps": [
+      "llama-server"
+    ],
+    "disk": "0",
+    "memory": "再加载一份模型（3B 约 2 GB）",
+    "network": false
+  },
+  "settings": [
+    {
+      "key": "max_tokens",
+      "label": "子智能体回复上限",
+      "type": "int",
+      "default": 512,
+      "help": "",
+      "min": 64,
+      "max": 4096,
+      "unit": "token"
+    }
+  ],
   "tools": [
     {
       "name": "subagent_ask",
@@ -16,16 +37,12 @@
         "task": "string，子任务描述",
         "system": "string，可选，子智能体的角色设定",
         "max_tokens": "int，可选，默认 512"
-      }
-    }
-  ],
-  "settings": [
-    {
-      "key": "max_tokens",
-      "label": "子智能体回复上限",
-      "type": "int",
-      "default": 512,
-      "help": ""
+      },
+      "level": "act",
+      "needs": [
+        "额外加载模型",
+        "内存"
+      ]
     }
   ]
 }
