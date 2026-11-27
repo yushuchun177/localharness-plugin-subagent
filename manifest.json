@@ -3,6 +3,7 @@
   "name": "子智能体",
   "name_en": "Sub-agent",
   "version": "0.1.0",
+  "license": "GPL-3.0",
   "description": "另起一个独立的模型实例，带着自己的系统提示去处理子任务，只把结果交回来。",
   "description_en": "Spawn a separate model instance with its own system prompt for a subtask, returning only the result.",
   "author": "yushuchun177",
