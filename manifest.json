@@ -18,5 +18,14 @@
         "max_tokens": "int，可选，默认 512"
       }
     }
+  ],
+  "settings": [
+    {
+      "key": "max_tokens",
+      "label": "子智能体回复上限",
+      "type": "int",
+      "default": 512,
+      "help": ""
+    }
   ]
 }
